@@ -24,7 +24,7 @@ from music21 import *
 Télécharger le programme :
 
 A partir de Github télécharger le fichier .zip.
-Ou taper dans le terminal : git clone 
+Ou taper dans le terminal : git clone https://github.com/doremijazz/analysis_harmonies.git
 
 ---------------------------------------------
 
