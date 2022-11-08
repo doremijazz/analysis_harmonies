@@ -9,7 +9,6 @@ def action(event):
     print("vous avez selectionner", freq)
     
     print(listeCombo.current())
-    
 
 def recup_fichier():
     return (askopenfilename(title="Choisir une partition",filetypes=[('mxl files','.mxl'),('all files','.*')]))
@@ -53,25 +52,29 @@ def update_interface(fenetre, filepath):
     nom_du_fichier.grid(row=4, column=0, columnspan=2)
     label = Label(fenetre, text=filepath, font="Timenewroman 12")
     label.grid(row=4, column=1, columnspan=2)
-    print(freq)
     listeCombo.grid(row=3, column=0, columnspan=3)
     listeCombo.bind('<<ComboboxSelected>>',action)
+    
 
 freq = "NONE"
+filepath = "NONE"
 
 fenetre = Tk()
 fenetre.title("Analyse")
 fenetre.iconbitmap("/Users/ana/Downloads/icon2.ico")
 fenetre.geometry("500x300")
-init_interface (fenetre)
 listeCombo = ttk.Combobox(fenetre)
 n = StringVar()
 listeCombo = ttk.Combobox(fenetre, textvariable = n)
 listeCombo['values'] = ["croche","noire","noire_pointe","blanche"]
- 
-print(freq)
 
-filepath = recup_fichier()
-update_interface(fenetre, filepath)
-fenetre.mainloop
+def main ():
+    init_interface (fenetre)
+    filepath = recup_fichier()
+    fenetre.mainloop
+    update_interface(fenetre, filepath)
+    print(freq)
+    fenetre.mainloop
+    return (filepath, freq)
+  
 
