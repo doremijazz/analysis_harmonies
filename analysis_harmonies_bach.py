@@ -1,9 +1,16 @@
 from music21 import *
+from tkinter.filedialog import *
+from tkinter import *
+from PIL import ImageTk, Image
+global freq
+import interface
 
 #fonction main
 def analyse_partition(partition):
     SATB_vrac = explore_partition(partition)
     SATB_chord = empile_chords(SATB_vrac)
+    SATB_chord = supr_doublure(SATB_chord)
+    SATB_chord = frequence_harmonique(SATB_chord)
     (L_accord_anglo) = anglo_symbole(SATB_chord)
     print(L_accord_anglo)
     L_accord_baroque = roman_symbole(partition, SATB_chord)
@@ -64,6 +71,31 @@ def empile_chords(SATB_vrac):
     
     return vrac
 
+def supr_doublure(SATB_chord):
+    chord_simplifie = []
+    for chord_8 in SATB_chord:
+        new_list = []
+        for note_chord in chord_8 :
+            octave_inf = note_chord-12
+            octave_sup = note_chord+12
+            #and (octave_sup not in new_list)
+            if (note_chord not in new_list) and (octave_inf not in chord_8) : 
+                new_list.append(note_chord)
+        chord_simplifie.append(new_list)
+    print (chord_simplifie)
+    return (chord_simplifie)
+
+def frequence_harmonique(SATB_chord):
+    if freq == 'croche':
+        return (SATB_chord[0::2])
+    if freq == 'noire':
+        return (SATB_chord[0::4])
+    if freq == 'noire_pointe':
+        return (SATB_chord[0::6])
+    if freq == 'blanche':
+        return (SATB_chord[0::8])
+    return (SATB_chord)
+
 #a partie des accords en valeurs midi retourne
 #les symboles anglosaxon des accords
 def anglo_symbole(SATB_chord):
@@ -72,8 +104,9 @@ def anglo_symbole(SATB_chord):
     for one_chord in SATB_chord:
         c = chord.Chord(one_chord)
         basses = note.Note()
-        basses.pitch.ps = round(one_chord[3])
-        pitch.Pitch(ps=one_chord[3])
+        print (len(one_chord))
+        basses.pitch.ps = round(one_chord[len(one_chord)-1])
+        pitch.Pitch(ps=one_chord[len(one_chord)-1])
         basses.step
         
         c.duration.type = 'whole'
@@ -106,11 +139,19 @@ def roman_symbole(partition, SATB_chord):
         baroque = (roman.romanNumeralFromChord(chord.Chord(anglo),a))
         L2.append(baroque.figure)
     return L2
-    
+
+
 #partition issus du corpus de music21
 #il est possible de fournir un choral à 4 voix
 #au format xml issus de music21 ou d'une autre sources
-partition = corpus.parse('bach/bwv108.6.xml')
+#partition = corpus.parse('bach/bwv108.6.xml')
+
+##############################################@
+
+result_inte = interface.main()
+filepath, freq = result_inte
+partition = converter.parse(filepath)
 
 #lance le programme
 analyse_partition(partition)
+
