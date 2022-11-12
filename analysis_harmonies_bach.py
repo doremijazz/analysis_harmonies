@@ -306,11 +306,11 @@ def write_analyse (partition, degres, chiffrage):
 
 ##############################################@
 
-#result_inte = interface.main()
-#filepath, freq = result_inte
-#freq =  'noire'
-#freq_num = 1
-#partition = converter.parse(filepath)
+result_inte = interface.main()
+filepath, freq = result_inte
+freq =  'noire'
+freq_num = 1
+partition = converter.parse(filepath)
 
 #lance le programme
-#analyse_partition(partition)
+analyse_partition(partition)
