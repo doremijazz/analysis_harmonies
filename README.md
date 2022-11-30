@@ -1,6 +1,12 @@
 # analysis_harmonies
-Analyse harmonique de choral à 4 voix
+Analyse harmonique d'oeuvre à plusieurs voix : de la partition pour piano a une partition d'orchestre de chambre en passant par des chorals SATB.
 
+Méthode pour utiliser le programme quand on à pas de connaissance en informatique :
+------------------------------------------
+
+UNE IMAGE DISQUE .DMG UTILISABLE SUR MAC SERA BIENTOT DISPONIBLE AINSI QUE DANS UN SEGOND TEMPS UN EXECUTABLE .EXE POUR WINDOWS
+
+Methode pour utiliser le code :
 ------------------------------------------
 Prés requis :
 
