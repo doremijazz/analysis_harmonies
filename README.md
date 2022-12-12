@@ -19,12 +19,11 @@ Pour mettre à jour, on peut taper :
 
 sudo pip3 install –upgrade music21
 
-- - - - - - - - - - - - - - - - - - - - - - - 
+Mais aussi le logiciel Musescore (pour afficher l'analyse) en ligne ou à l'aide du terminal :
+pip3 install musescore
 
-Est pour l'utiliser il nous suffit comme cela a été fait dans ce programme de l'importer.
-Dans le fichier .py il suffit donc de taper :
-
-from music21 import *
+Et pour finir il vous faudra Tkinter (bibliothéque pour interface en python)
+pip3 install python3-tk
 
 ---------------------------------------------
 Télécharger le programme :
@@ -38,11 +37,8 @@ Utilisation du programme :
 
 Vous pouvez lancer le programme directement dans un IDE tel que IDLE ou dans à l'aide du terminal.
 
-Dans un IDE il suffit de faire run tout simplement. 
-Pour changer le morceau à analyser il suffit de modifier la ligne -> partition = corpus.parse('bach/bwv108.6.xml').
-
-Vous pouvez choisir une autre œuvre proposer dans le corpus de Music21 ou indiquer le chemin d'un fichier au format xml que vous souhaitez analyser (attention ce programme d'analyse des œuvres à 4 voix pour choeur seulement pour le moment).
+Il suffit ensuite de choisir sur l'ordinateur un fichier .mxl que l'on souhaite analyser
 
 --------------------------------------------
 
-Vous n'avez plus qu'à analyser plein de choral et travailler vos compétences d'analyse musicale.
+Vous n'avez plus qu'à analyser tout un tas d'oeuvre et travailler vos compétences d'analyse musicale.
