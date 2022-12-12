@@ -4,7 +4,27 @@ from tkinter import *
 from PIL import ImageTk, Image
 global freq
 global freq_num
+modulation = []
 import interface
+
+seconde = ''
+tierce = ''
+quarte = ''
+quinte = ''
+sixte = ''
+septieme = ''
+neuvieme = ''
+cinq_dim = ''
+six_dim = ''
+sept_dim = ''
+neuf_dim = ''
+aug = ''
+diese = ''
+bemol = ''
+notation_baroque = [quinte, quinte , sixte, sixte, sixte + '\n' + quarte,  sixte + '\n' + quarte, septieme + '\n' + aug, sixte + '\n' + cinq_dim, aug + sixte, aug + quarte, cinq_dim, aug + sixte + '\n' + tierce, sixte + '\n' + aug + quarte, septieme, sixte + '\n' + quinte, quarte + '\n' + tierce, seconde, neuvieme + '\n' + septieme + '\n' + aug, septieme + '\n' + sixte + '\n' + cinq_dim, quinte + '\n' + aug + sixte + '\n' + quarte, tierce + '\n' + aug + quarte + '\n' + seconde, neuvieme + '\n' + septieme + '\n' + aug, sept_dim + '\n' + sixte + '\n' + cinq_dim, aug + sixte + '\n' + cinq_dim + '\n' + quarte,  aug + quarte + '\n' + tierce + '\n' + seconde, septieme + '\n' + cinq_dim, quinte + '\n' + aug + sixte, tierce + '\n' + aug + quarte, quarte + '\n' + aug + seconde, sept_dim, aug + sixte + '\n' + cinq_dim, aug + quarte + '\n' + tierce, aug + seconde]
+notation_music21 = [['P5','M3'],['P5','m3'],['m6','m3'],['M6','M3'],['M6', 'P4'],['m6', 'P4'],['m7','P5','M3'],['m6','d5','m3'],['M6','P4','m3'],['M6','A4','M2'],['d5','m3'],['M6','m3'],['M6','A4'],['m7','P5','m3'],['M6','P5','M3'],['m6','P4','m3'],['M6','P4','M2'],['m7','P5','M3','M2'],['m7','m6','d5','m3'],['M6','P5','P4','m3'],['M6','A4','M3','M2'],['m7','m6','d5','m3'],['d7','m6','d5','m3'],['M6','d5','P4','m3'],['M6','A4','m3','M2'],['m7','A5','M3'],['M6','P5','m3'],['M6','A4','M3'],['m6','P4','M2'],['d7','d5','m3'],['M6','d5','m3'],['M6','A4','m3'],['M6','A4','A2']]
+intervals_baroque = [seconde, tierce, quarte, quinte, sixte, septieme, neuvieme, bemol + seconde, bemol + tierce, bemol + quarte, cinq_dim, bemol + sixte, bemol + septieme, sept_dim, bemol + neuvieme, neuf_dim, diese + seconde, diese + tierce, diese + quarte, diese + quinte, diese + sixte, diese + septieme, diese + neuvieme]
+intervals_m21 = ['M2', 'M3', 'P4', 'P5', 'M6', 'M7', 'M9', 'm2', 'm3', 'd4', 'd5', 'm6', 'm7', 'd7', 'm9', 'd9', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A9']
 
 #fonction main
 def analyse_partition(partition):
@@ -182,6 +202,12 @@ def frequence_harmonique(SATB_chord):
         return (SATB_chord[0::8])
     return (SATB_chord)
 
+def analys_modulation (partition) :
+    soprano = partition.parts['Soprano']
+    
+    measure(1).timeSignature
+
+    
 
 
 #a partie des accords en valeurs midi retourne
@@ -208,16 +234,6 @@ def anglo_symbole(SATB_chord):
         print(c.quality)
         c6_again = harmony.ChordSymbol(root=c[0], bass=c.bass(), kind=c.quality)
         
-        
-        #c9.containsSeventh()
-        #Accord. isSwissAugmentedSixth
-        #Accord. isSeventhOfType
-        #cChord.isNinth()
-        #isItalianAugmentedSixth
-        #Accord. isFrenchAugmentedSixth
-        #Accord. isDiminishedSeventh
-        #Accord. isAugmentedTriad
-        #Accord. isAugmentedSixth
         roman.RomanNumeral('I7#5b3').figuresWritten
         
         symbole = harmony.chordSymbolFigureFromChord(c, True)
@@ -230,6 +246,45 @@ def anglo_symbole(SATB_chord):
         print("n",c6_again)
         print("s",symbole)
     return (L)
+
+def compare(accord_analyse, accord_m21):
+    for i in range (len(accord_m21)):
+        if accord_analyse[i] != accord_m21[i] :
+            return False
+    print('True')
+    return True
+
+def tradui_intervals_to_baroque_notation (accord_analyse):
+    chord_trad = ""
+    print(len(intervals_baroque))
+    print(len(intervals_m21))
+    for chord_interval in accord_analyse:
+        index = intervals_m21.index(chord_interval)
+        chord_trad += (intervals_baroque[index] + "\n")
+        
+    print(chord_trad)
+    return (chord_trad)
+
+def notation_baroque_accord(chiffrage):
+    chiffrage_traduit = []
+    for a in range (len(chiffrage)) :
+        print("chiffrage = " , chiffrage[a])
+        i = 0
+        while i < (len(notation_music21)):
+            if (len(chiffrage[a])) == (len(notation_music21[i])) and (compare(chiffrage[a], notation_music21[i])== True):
+                print('OK 2')
+                print(notation_music21[i])
+                chiffrage_traduit.append(notation_baroque[i])
+                break
+            else :
+                i +=1
+                
+        if ((len(chiffrage_traduit)<a+1)):
+            print("accord non conventionel")
+            chiffrage_traduit.append(tradui_intervals_to_baroque_notation (chiffrage[a]))
+                    
+    return (chiffrage_traduit)
+            
 
 #a partir des accords en valeurs midi retourne
 #le chiffrage baroque des accords avec dégrés et qualification
@@ -246,12 +301,22 @@ def roman_symbole(partition, SATB_chord):
         c = chord.Chord(anglo)
         c.closedPosition(forceOctave=4, inPlace=True)
         degres.append((roman.romanNumeralFromChord(c, key.Key(a))).romanNumeralAlone)
+        c3 = c.annotateIntervals(inPlace=False, stripSpecifiers=False)
+        chiffrage.append([ly.text for ly in c3.lyrics])
         print(roman.romanNumeralFromChord(c, key.Key(a)))
-        c.annotateIntervals()
-        basse_chiffre = ""
-        for l in c.lyrics:
-            basse_chiffre = basse_chiffre + "\n" + l.text
-        chiffrage.append(basse_chiffre)
+        #c.annotateIntervals(inPlace=False, stripSpecifiers=False)
+        #basse_chiffre = ""
+        #print(c.lyrics)
+        #for l in c.lyrics:
+            #basse_chiffre = basse_chiffre + "\n" + l.text
+            #print("tab accord " + [ly.text for ly in c.lyrics])
+        #chiffrage.append([ly.text for ly in c.lyrics])
+
+    print(chiffrage)
+
+    chiffrage = notation_baroque_accord(chiffrage)
+    print(chiffrage)
+       
     return (degres, chiffrage)
 
 def write_analyse (partition, degres, chiffrage):
@@ -277,22 +342,23 @@ def write_analyse (partition, degres, chiffrage):
         i = i +rep
     dessous_basse.show()
     cpt = 0
-    for note2 in dessus_basse.flat.notes:
-        duration2 = note2.quarterLength
-        rep2 = int(duration2//freq_num)
+    while j < len(chiffrage):
+        for note2 in dessus_basse.flat.notes:
+            duration2 = note2.quarterLength
+            rep2 = int(duration2//freq_num)
         
-        if cpt == 0 and rep2 == 0:
-            rep2 = 1
-            cpt+=duration2
-        elif rep2 == 0:
-            cpt+=duration2
-        if cpt >= freq_num:
-            cpt = 0
+            if cpt == 0 and rep2 == 0:
+                rep2 = 1
+                cpt+=duration2
+            elif rep2 == 0:
+                cpt+=duration2
+            if cpt >= freq_num:
+                cpt = 0
         
     
-        for b2 in range (rep2):
-            note2.addLyric(str(chiffrage[j]))
-        j= j + rep2
+            for b2 in range (rep2):
+                note2.addLyric(str(chiffrage[j]))
+            j= j + rep2
     dessus_basse.show()
     partition.show()
     return
@@ -305,12 +371,18 @@ def write_analyse (partition, degres, chiffrage):
 #partition = corpus.parse('bach/bwv108.6.xml')
 
 ##############################################@
-
+#transformer en fonction main
+#def main ():
 result_inte = interface.main()
 filepath, freq = result_inte
+    
 freq =  'noire'
 freq_num = 1
 partition = converter.parse(filepath)
 
 #lance le programme
 analyse_partition(partition)
+
+note = note.Note("F5")
+note.addLyric(str(quinte))
+note.show()
