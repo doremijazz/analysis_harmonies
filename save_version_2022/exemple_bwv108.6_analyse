@@ -1,0 +1,43 @@
+Quand on execute le programme voici ce qui s'affiche. Le pas de temps est la double croches il faudra modifier cela pour que
+l'utilisateur puisse définir ce pas de temps sur la fréquence harmonique de l'oeuvre. Dans cette exemple ce devrait etre au minimum
+à la noire.
+
+Il faudra gérer les doublures d'octave qui impacte le résultat pour le chiffrage baroque qui en est donc moins lisible. Par exemple 'ivb863' devrait
+étre 'IVb63' voir encore mieux 'IVb6'. En gérant ce probléme nous aurrions aussi 'I' et 'IV' au lieu de 'i' et 'iv'.
+
+Pour l'analyse avec les symboles anglo saxon il faudra trouver une notation plus claire des accords comme 'F#poweraddE'. C'est à réflechir à l'aide de
+music21 et des fonctionalités que cela nous propose.
+
+_______________________________________________________________________________________________________________________________________
+
+Accord empilé
+
+['Bm', 'Bm', 'Bm', 'Bm', 'Em', 'Em', 'Em/F#', 'Em/F#', 'Em/G', 'Em/G', 'Em/A', 'Em/A', 'Bm', 'Bm', 'G#/D', 'G#/D', 'Eo7/D-', 'Eo7/D-', 
+'Em/B', 'Em/B', 'F#/A#', 'F#/A#', 'F#poweraddE', 'F#poweraddE', 'Bm', 'Bm', 'Bm', 'Bm', 'F#', 'F#', 'F#', 'F#', 'Bm/D', 'Bm/D', 
+'A#dim/C#', 'A#dim/C#', 'Bm', 'Bm', 'Bm', 'Bm', 'F#/A#', 'F#/A#', 'F#poweraddE', 'F#poweraddE', 'Bm', 'Bm', 'F#power/C#addE',
+'F#power/C#addE', 'Bm', 'Bm', 'Bm', 'Bm', 'E7/G#', 'E7/G#', 'A#dim', 'A#dim', 'Bm', 'Bm', 'G#dim/B', 'G#dim/B', 'F#', 'F#', 
+'F#', 'F#', 'Bm', 'Bm', 'C#/B', 'C#/B', 'Bm', 'Bm', 'F#m/AaddB', 'F#m/AaddB', 'E/G#', 'E/G#', 'Bpower/F#', 'Bpower/F#', 
+'E', 'E', 'E7/D', 'E7/D', 'C#m', 'C#m', 'G#dim/B', 'G#dim/B', 'A', 'A', 'A/C#addD', 'A/C#', 'D/F#', 'D/F#', 'A/E', 'A/E', 'Bm7/D', 
+'Bm7/D', 'BpoweraddA', 'BpoweraddA', 'E', 'E', 'E7', 'E7', 'A', 'A', 'A', 'A', 'D', 'D', 'F#m7/C#', 'F#m7/C#', 'Bm', 'Bm', 'Bm', 'Bm',
+'F#/A#', 'F#/A#', 'F#', 'F#', 'Bm', 'Bm', 'C#', 'C#', 'Bm/D', 'Bm/D', 'Bm', 'Bm', 'E7/G#', 'E7/G#', 'A#dim', 'A#dim', 'BmaddC#', 'BmaddC#',
+'Bm', 'Bm', 'F#', 'F#', 'F#', 'F#', 'Bm', 'Bm', 'F#m/A', 'F#m/A', 'E7/G#', 'E7/G#', 'E', 'E', 'A', 'A', 'A7/G', 'A7/G', 'D/F#', 'D/F#', 
+'Apower/EaddG', 'Apower/EaddG', 'D', 'D', 'Dmaj7/C#', 'Dmaj7/C#', 'Em7/B', 'Em7/B', 'Eo7/B-', 'Eo7/B-', 'BmaddC#', 'BmaddC#', 'Bm', 'Bm',
+'F#', 'F#', 'F#', 'F#', 'B-', 'B-', 'C#/B-', 'C#/B-', 'BmaddC#', 'BmaddC#', 'F#power/C#', 'F#power/C#', 'Bm/D', 'Bm/D', 'B7/D#', 'B7/D#', 'Em',
+'Em', 'F#susaddE,omitC#', 'F#susaddE,omitC#', 'Em/G', 'Em/G', 'E7/G#', 'E7/G#', 'A', 'A', 'C#o7/B-', 'C#o7/B-', 'Bm', 'Bm', 'Em/G', 'Em/G', 'C#ø7/E',
+'C#ø7/E', 'C#', 'C#', 'F#', 'F#', 'F#7', 'F#7', 'B', 'B', 'B', 'B']
+
+tonalité :  b minor
+
+['i', 'i', 'i', 'i', 'iv', 'iv', 'iv74b2', 'iv74b2', 'ivb863', 'ivb863', 'ivb8b752', 'ivb8b752', 'i', 'i',
+'viøb843', 'viøb843', 'ivobb8b6b42', 'ivobb8b6b42', 'iv64', 'iv64', 'V6', 'V6', 'v7', 'v7', 'i', 'i', 'i', 'i',
+'V', 'V', 'V', 'V', 'ib863', 'ib863', 'viio6', 'viio6', 'i', 'i', 'i', 'i', 'V6', 'V6', 'v7', 'v7', 'i5b33', 'i5b33',
+'v43', 'v43', 'i', 'i', 'i', 'i', 'IV6b5', 'IV6b5', 'viio', 'viio', 'i5b33', 'i5b33', 'vio6', 'vio6', 'V', 'V', 'V', 'V',
+'i', 'i', 'ii42', 'ii42', 'i', 'i', 'vb8632', 'vb8632', 'IV6', 'IV6', 'i4', 'i4', 'IV', 'IV', 'IVb8642', 'IVb8642', 'ii',
+'ii', 'vio6b33', 'vio6b33', 'bVII', 'bVII', 'bVII#86#32', 'bVII6#33', 'bIII#863', 'bIII#863', 'bVII64', 'bVII64', 'ib86b53',
+'ib86b53', 'ib75', 'ib75', 'IV', 'IV', 'IVb753', 'IVb753', 'bVII', 'bVII', 'bVII', 'bVII', 'bIII', 'bIII', 'vb643', 'vb643',
+'i', 'i', 'i', 'i', 'V6', 'V6', 'V', 'V', 'i', 'i', 'ii7', 'ii7', 'ib863', 'ib863', 'i', 'i', 'IV6b5', 'IV6b5', 'viio', 'viio',
+'i5b32', 'i5b32', 'i', 'i', 'V', 'V', 'V', 'V', 'i', 'i', 'vb863', 'vb863', 'IV6b5', 'IV6b5', 'ivb7b3', 'ivb7b3', 'bVII', 'bVII',
+'bVII#6#42', 'bVII#6#42', 'bIII#863', 'bIII#863', 'bvii43', 'bvii43', 'bIII', 'bIII', 'bIII6#42', 'bIII6#42', 'ivb64b3', 'ivb64b3',
+'ivob8b64bb3', 'ivob8b64bb3', 'i5b32', 'i5b32', 'i', 'i', 'V', 'V', 'V', 'V', 'bi+#5#2', 'bi+#5#2', 'iib8542', 'iib8542', 'i5b32', 'i5b32',
+'v4', 'v4', 'ib863', 'ib863', 'I6b5', 'I6b5', 'iv', 'iv', 'iv74', 'iv74', 'ivb863', 'ivb863', 'IV6b5', 'IV6b5', 'bVII', 'bVII', 'iiob8b642', 
+'iiob8b642', 'i5b33', 'i5b33', 'ivb863', 'ivb863', 'iiø65b3', 'iiø65b3', 'iiø7b5', 'iiø7b5', 'V', 'V', 'V7', 'V7', 'I', 'I', 'I', 'I']
