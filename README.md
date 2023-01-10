@@ -22,6 +22,8 @@ sudo pip3 install –upgrade music21
 Mais aussi le logiciel Musescore (pour afficher l'analyse) en ligne ou à l'aide du terminal :
 pip3 install musescore
 
+!!!!!! Ne fonctionne pas avec MuseScore 4 -> il vous faudra MuseScore 3.6.2 ou version antérieur !!!!!!!!!!!
+
 Et pour finir il vous faudra Tkinter (bibliothéque pour interface en python)
 pip3 install python3-tk
 
