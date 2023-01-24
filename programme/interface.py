@@ -11,7 +11,7 @@ def main ():
 
     fenetre = Tk()
     fenetre.title("Analyse")
-    fenetre.iconbitmap("/Users/ana/Downloads/icon2.ico")
+    fenetre.iconbitmap("image/icon2.ico")
     fenetre.geometry("500x300")
 
     photo = Image.open("image/logo_labri.png")
