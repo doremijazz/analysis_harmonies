@@ -60,7 +60,7 @@ Utiliser à nouveau sur Mac
 -----------------------------------------
 Une fois la méthode précédent réaliser à la 1er utilisation, il suffira de saisir les derniere ligne de code dans le terminal :
 
-``cd ~/Downloads/analysis_harmonies-main/analysis_harmonies-main/programme``
+``cd Downloads/analysis_harmonies-main/analysis_harmonies-main/programme``
 
 ``python3 main.py``
 
