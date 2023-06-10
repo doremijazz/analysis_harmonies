@@ -1,5 +1,5 @@
 ##### Main analysis harmonie MXL score ####
-print("code de github, je vais m'exécuter)
+print("code de github, je vais m'exécuter")
 from music21 import *
 from tkinter.filedialog import *
 from tkinter import *
