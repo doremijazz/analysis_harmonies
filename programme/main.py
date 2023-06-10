@@ -36,9 +36,13 @@ def score_analysis(score_XML, freq, freq_nb_double):
 
 
 def main():
-    result_inte = interface.main()
-    filepath, freq, freq_nb_double = result_inte
-    print(freq)
+    #result_inte = interface.main()
+    #filepath, freq, freq_nb_double = result_inte
+    #print(freq)
+
+    filepath = "~/Desktop/bwv2.6.mxl"
+    freq = "noire"
+    freq_nb_double = 4
     
 
     score_XML = converter.parse(filepath)
