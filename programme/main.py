@@ -1,5 +1,9 @@
 ##### Main analysis harmonie MXL score ####
 print("code de github, je vais m'exécuter")
+import sys
+import os
+from urllib.parse import urlparse
+
 from music21 import *
 from tkinter.filedialog import *
 from tkinter import *
@@ -11,6 +15,11 @@ import harmonic_context_analysis
 import harmonic_analysis
 import display
 
+p = urlparse(sys.argv[1])
+score_path = os.path.abspath(os.path.join(p.netloc, p.path))
+freq = sys.argv[2]
+double = int(sys.argv[3])
+print(score_path, freq, double)
 
 def score_analysis(score_XML, freq, freq_nb_double):
     
@@ -35,14 +44,14 @@ def score_analysis(score_XML, freq, freq_nb_double):
     return
 
 
-def main():
+def main(filepath, freq, freq_nb_double):
     #result_inte = interface.main()
     #filepath, freq, freq_nb_double = result_inte
     #print(freq)
 
-    filepath = "~/Desktop/bwv2.6.mxl"
-    freq = "noire"
-    freq_nb_double = 4
+    #filepath = "~/Desktop/bwv2.6.mxl"
+    #freq = "noire"
+    #freq_nb_double = 4
     
 
     score_XML = converter.parse(filepath)
@@ -51,4 +60,4 @@ def main():
     score_analysis(score_XML, freq, freq_nb_double)
     return
 
-main()
+main(score_path, freq, double)
